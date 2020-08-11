@@ -17,5 +17,8 @@ public class Word extends BaseEntity{
     private Long id;
     private String title;
     private String polishMeaning;
-
+    private String partOne;
+    private String partTwo;
+    private String articulation;
+    private String relator;
 }
