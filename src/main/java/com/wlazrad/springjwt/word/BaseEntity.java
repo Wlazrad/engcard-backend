@@ -25,7 +25,7 @@ public abstract class BaseEntity implements Serializable {
     @JoinColumn(name = "username")
     private User createdByObj;
 
-    @Column(name = "created_by", updatable = false, insertable = false)
+    @Column(name = "created_by")
     private String createdBy;
 
     @CreatedDate

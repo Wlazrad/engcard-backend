@@ -1,5 +1,6 @@
 package com.wlazrad.springjwt.word;
 
+import com.wlazrad.springjwt.security.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +12,7 @@ public class WordService {
     WordRepository wordRepository;
 
     public Word saveWord(Word word) {
-
+        word.setCreatedBy(SecurityUtils.getCurrentUserLogin());
         return wordRepository.save(word);
     }
 

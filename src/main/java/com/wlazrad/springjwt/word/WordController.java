@@ -1,5 +1,6 @@
 package com.wlazrad.springjwt.word;
 
+import com.wlazrad.springjwt.security.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +17,8 @@ public class WordController {
     @PostMapping("/add")
     @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public Word addWord(@RequestBody Word word) {
+
+        System.out.println("lala"+SecurityUtils.getCurrentUserLogin());
         wordService.saveWord(word);
         return word;
     }
