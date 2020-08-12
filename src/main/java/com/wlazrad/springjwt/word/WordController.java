@@ -25,7 +25,7 @@ public class WordController {
 
     @GetMapping("/add")
     @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
-    public List<Word> getWordList(@RequestBody Word word) {
+    public List<Word> getWordList() {
         return wordService.returnAllWords();
     }
 }
