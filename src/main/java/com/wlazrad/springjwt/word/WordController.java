@@ -18,7 +18,7 @@ public class WordController {
     @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public Word addWord(@RequestBody Word word) {
 
-        System.out.println("lala"+SecurityUtils.getCurrentUserLogin());
+        System.out.println("lala" + SecurityUtils.getCurrentUserLogin());
         wordService.saveWord(word);
         return word;
     }
@@ -27,5 +27,11 @@ public class WordController {
     @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public List<Word> getWordList() {
         return wordService.returnAllWords();
+    }
+
+    @DeleteMapping("/delete/{id}")
+    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+    public void deleteWord(@PathVariable Long id) {
+        wordService.deleteWord(id);
     }
 }

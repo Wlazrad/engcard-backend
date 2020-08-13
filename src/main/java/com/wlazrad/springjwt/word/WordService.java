@@ -16,7 +16,11 @@ public class WordService {
         return wordRepository.save(word);
     }
 
-    public List<Word> returnAllWords(){
+    public List<Word> returnAllWords() {
         return wordRepository.findAll();
+    }
+
+    public void deleteWord(Long id) {
+        wordRepository.deleteById(id);
     }
 }

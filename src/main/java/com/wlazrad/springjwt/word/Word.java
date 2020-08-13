@@ -15,10 +15,10 @@ public class Word extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String title;
-    private String polishMeaning;
+    private String articulation;
     private String partOne;
     private String partTwo;
-    private String articulation;
+    private String polishMeaning;
     private String relator;
+    private String title;
 }

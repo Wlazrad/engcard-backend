@@ -19,7 +19,6 @@ import java.time.ZonedDateTime;
 @Setter
 public abstract class BaseEntity implements Serializable {
 
-
     @CreatedBy
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "username")
