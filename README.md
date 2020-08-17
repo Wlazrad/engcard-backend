@@ -57,3 +57,5 @@ INSERT INTO roles(name) VALUES('ROLE_USER');
 INSERT INTO roles(name) VALUES('ROLE_MODERATOR');
 INSERT INTO roles(name) VALUES('ROLE_ADMIN');
 ```
+
+SET GLOBAL time_zone = '+3:00';
