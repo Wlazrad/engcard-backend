@@ -21,4 +21,5 @@ public class Word extends BaseEntity{
     private String polishMeaning;
     private String relator;
     private String title;
+    private PartOfSpeech partOfSpeech;
 }
