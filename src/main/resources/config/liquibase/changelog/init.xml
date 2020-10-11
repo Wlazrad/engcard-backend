@@ -15,11 +15,11 @@
 <!--    </changeSet>-->
 
 
-            <changeSet id="first" author="wlazrad">
-                <sql>
-                    INSERT INTO roles(name) VALUES('ROLE_USER');
-                    INSERT INTO roles(name) VALUES('ROLE_MODERATOR');
-                    INSERT INTO roles(name) VALUES('ROLE_ADMIN');
-                </sql>
-            </changeSet>
+<!--            <changeSet id="first" author="wlazrad">-->
+<!--                <sql>-->
+<!--                    INSERT INTO roles(name) VALUES('ROLE_USER');-->
+<!--                    INSERT INTO roles(name) VALUES('ROLE_MODERATOR');-->
+<!--                    INSERT INTO roles(name) VALUES('ROLE_ADMIN');-->
+<!--                </sql>-->
+<!--            </changeSet>-->
 </databaseChangeLog>
