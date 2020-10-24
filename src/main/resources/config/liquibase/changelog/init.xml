@@ -5,15 +5,6 @@
 
     <property name="now" value="current_timestamp" dbms="mysql"/>
 
-<!--    <changeSet author="fifcy (generated)" id="1571079020437-0">-->
-<!--        <sql endDelimiter=";">-->
-<!--            IF (NOT EXISTS (SELECT * FROM sys.schemas WHERE name = 'audit'))-->
-<!--            BEGIN-->
-<!--            EXEC ('CREATE SCHEMA [audit]')-->
-<!--            END-->
-<!--        </sql>-->
-<!--    </changeSet>-->
-
 
 <!--            <changeSet id="first" author="wlazrad">-->
 <!--                <sql>-->
