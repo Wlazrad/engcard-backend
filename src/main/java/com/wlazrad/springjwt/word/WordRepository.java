@@ -8,4 +8,5 @@ public interface WordRepository extends JpaRepository<Word, Long> {
 
     @Override
     void deleteById(Long aLong);
+
 }

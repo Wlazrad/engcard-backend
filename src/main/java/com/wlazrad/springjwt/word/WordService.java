@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class WordService {
@@ -23,10 +23,17 @@ public class WordService {
     }
 
     public List<Word> returnAllWords() {
-        return wordRepository.findAll();
+        return wordRepository.findAll().stream()
+                .filter(word -> word.getUser().getUsername().equals(SecurityUtils.getCurrentUserLogin()))
+                .collect(Collectors.toList());
     }
 
     public void deleteWord(Long id) {
         wordRepository.deleteById(id);
+    }
+
+    public List<Word> returnAllWordsAllUsers() {
+
+        return wordRepository.findAll();
     }
 }

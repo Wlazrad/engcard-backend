@@ -34,4 +34,10 @@ public class WordController {
     public void deleteWord(@PathVariable Long id) {
         wordService.deleteWord(id);
     }
+
+    @GetMapping("/word/list/all")
+    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+    public List<Word> getWordListAllUsers() {
+        return wordService.returnAllWordsAllUsers();
+    }
 }
