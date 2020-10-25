@@ -21,7 +21,6 @@ public class DikiClient {
     HttpEntity<String> entity = new HttpEntity<>(headers);
 
     public List<String> getAutoCompleteList(String partWord) {
-        partWord = "dom";
         ResponseEntity<List> forEntity = restTemplate.getForEntity(NBP_USD +partWord+ WORD, List.class, entity);
         List<String> autoCompleteList = forEntity.getBody();
         autoCompleteList.forEach(x -> System.out.println(x));
