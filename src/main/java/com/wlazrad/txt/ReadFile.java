@@ -15,7 +15,6 @@ public class ReadFile {
             while (myReader.hasNextLine()) {
                 String data = myReader.nextLine();
                 wordList.add(data);
-                System.out.println(data);
             }
             myReader.close();
             return wordList;
