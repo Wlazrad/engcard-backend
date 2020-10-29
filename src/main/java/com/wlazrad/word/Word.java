@@ -20,7 +20,7 @@ public class Word extends BaseEntity{
     private String partOne;
     private String partTwo;
     private String polishMeaning;
-    private String relator;
+    private String spelling;
     private String title;
     private PartOfSpeech partOfSpeech;
     @ManyToOne
