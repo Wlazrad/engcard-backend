@@ -1,6 +1,8 @@
 package com.wlazrad.models;
 
 import com.wlazrad.word.Word;
+import org.hibernate.envers.Audited;
+import org.hibernate.envers.NotAudited;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -11,12 +13,16 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import static org.hibernate.envers.RelationTargetAuditMode.NOT_AUDITED;
+
+
 @Entity
 @Table(	name = "users", 
 		uniqueConstraints = { 
 			@UniqueConstraint(columnNames = "username"),
 			@UniqueConstraint(columnNames = "email") 
 		})
+@Audited(targetAuditMode = NOT_AUDITED)
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

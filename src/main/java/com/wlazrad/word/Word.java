@@ -4,9 +4,12 @@ import com.wlazrad.models.User;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.envers.Audited;
+import org.hibernate.envers.RelationTargetAuditMode;
 
 import javax.persistence.*;
 
+@Audited
 @Entity
 @Data
 @Getter
@@ -23,6 +26,7 @@ public class Word extends BaseEntity{
     private String spelling;
     private String title;
     private PartOfSpeech partOfSpeech;
+    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
