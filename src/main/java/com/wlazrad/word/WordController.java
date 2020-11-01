@@ -39,4 +39,16 @@ public class WordController {
     public List<Word> getWordListAllUsers() {
         return wordService.returnAllWordsAllUsers();
     }
+
+    @PutMapping("/teach/{id}")
+    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+    public void addToTeachWord(@PathVariable Long id) {
+        wordService.addToTeachWord(id);
+    }
+
+    @GetMapping("/teach/all")
+    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+    public List<Word> getAllTeachWord() {
+        return wordService.getAllTeachWords();
+    }
 }

@@ -9,7 +9,7 @@ import org.hibernate.envers.RelationTargetAuditMode;
 
 import javax.persistence.*;
 
-@Audited
+//@Audited
 @Entity
 @Data
 @Getter
@@ -26,8 +26,9 @@ public class Word extends BaseEntity{
     private String spelling;
     private String title;
     private PartOfSpeech partOfSpeech;
-    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
-    @ManyToOne
+//    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private User user;
+    private Boolean teach;
 }

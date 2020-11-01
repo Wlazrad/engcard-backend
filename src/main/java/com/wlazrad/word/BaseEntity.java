@@ -13,7 +13,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.time.ZonedDateTime;
 
-@Audited
+//@Audited
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
 @Getter

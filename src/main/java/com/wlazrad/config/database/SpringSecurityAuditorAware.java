@@ -10,19 +10,19 @@ import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 
-@Component
-@RequiredArgsConstructor
-public class SpringSecurityAuditorAware implements AuditorAware<User> {
-
-    @Autowired
-    UserRepository userRepository;
-
-    @Override
-    public Optional<User> getCurrentAuditor() {
-        String userLogin = SecurityUtils.getCurrentUserLogin();
-        if (userLogin == null) {
-            return Optional.empty();
-        }
-        return userRepository.findByUsername(SecurityUtils.getCurrentUserLogin());
-    }
-}
+//@Component
+//@RequiredArgsConstructor
+//public class SpringSecurityAuditorAware implements AuditorAware<User> {
+//
+//    @Autowired
+//    UserRepository userRepository;
+//
+//    @Override
+//    public Optional<User> getCurrentAuditor() {
+//        String userLogin = SecurityUtils.getCurrentUserLogin();
+//        if (userLogin == null) {
+//            return Optional.empty();
+//        }
+//        return userRepository.findByUsername(SecurityUtils.getCurrentUserLogin());
+//    }
+//}

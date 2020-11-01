@@ -5,6 +5,7 @@ import com.wlazrad.security.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,6 +20,8 @@ public class WordService {
     public Word saveWord(Word word) {
         word.setCreatedBy(SecurityUtils.getCurrentUserLogin());
         word.setUser(userRepository.findByUsername(SecurityUtils.getCurrentUserLogin()).get());
+        word.setCreatedDate(ZonedDateTime.now());
+        word.setTeach(false);
         return wordRepository.save(word);
     }
 
@@ -28,8 +31,21 @@ public class WordService {
                 .collect(Collectors.toList());
     }
 
+    public List<Word> getAllTeachWords() {
+        return wordRepository.findAll().stream()
+                .filter(word -> word.getUser().getUsername().equals(SecurityUtils.getCurrentUserLogin()))
+                .filter(word -> word.getTeach().equals(true))
+                .collect(Collectors.toList());
+    }
+
     public void deleteWord(Long id) {
         wordRepository.deleteById(id);
+    }
+
+    public void addToTeachWord(Long id) {
+        Word word = wordRepository.getOne(id);
+        word.setTeach(true);
+        wordRepository.save(word);
     }
 
     public List<Word> returnAllWordsAllUsers() {

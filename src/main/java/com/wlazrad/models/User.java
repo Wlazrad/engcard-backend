@@ -22,7 +22,7 @@ import static org.hibernate.envers.RelationTargetAuditMode.NOT_AUDITED;
 			@UniqueConstraint(columnNames = "username"),
 			@UniqueConstraint(columnNames = "email") 
 		})
-@Audited(targetAuditMode = NOT_AUDITED)
+//@Audited(targetAuditMode = NOT_AUDITED)
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
