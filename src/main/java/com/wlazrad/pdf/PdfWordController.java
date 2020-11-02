@@ -1,20 +1,15 @@
 package com.wlazrad.pdf;
 
 import com.wlazrad.word.Word;
-import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
-import org.springframework.security.access.annotation.Secured;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletResponse;
-import javax.validation.Valid;
 import java.io.IOException;
-import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,7 +23,7 @@ public class PdfWordController {
 
 
     @GetMapping(value = "/pdf/download/")
-    public void downloadWordPDF(HttpServletResponse response, @PathVariable(name = "invoiceId") Long invoiceId){
+    public void downloadWordPDF(HttpServletResponse response) {
         List<Word> wordList = new ArrayList<>();
         FileOBJ fileOBJ = pdfService.previewFile(wordList);
         setHeader(response, fileOBJ.getFileName());

@@ -29,6 +29,7 @@ public class PdfService {
             return generate(word);
         } catch (Exception e) {
             e.printStackTrace();
+            System.out.println(e.getMessage() + "lala");
             throw new CustomException("404", "pdf error");
         }
     }
@@ -38,7 +39,7 @@ public class PdfService {
             Locale locale = Locale.forLanguageTag("PL");
             Context ctx = new Context(locale);
 
-            ctx.setVariable("model", word);
+            ctx.setVariable("model", "lala");
             ctx.setVariable("copy", false);
 
             ByteArrayOutputStream os = new ByteArrayOutputStream();
@@ -49,7 +50,7 @@ public class PdfService {
             renderer.getFontResolver().addFont("fonts/timesbi.ttf", BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
             renderer.getFontResolver().addFont("fonts/timesi.ttf", BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
 
-            renderer.setDocumentFromString(templateEngine.process("templates/wordCard.html", ctx));
+            renderer.setDocumentFromString(templateEngine.process("wordCard.html", ctx));
             renderer.layout();
             renderer.createPDF(os, false);
             renderer.finishPDF();
@@ -67,5 +68,4 @@ public class PdfService {
     public FileOBJ previewFile(List<Word> wordList) {
         return new FileOBJ("2", generateFile(wordList));
     }
-
 }
