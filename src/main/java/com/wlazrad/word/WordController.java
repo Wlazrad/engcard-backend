@@ -46,6 +46,12 @@ public class WordController {
         wordService.addToTeachWord(id);
     }
 
+    @PutMapping("/teach/remove/{id}")
+    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+    public void removeFromTeachWord(@PathVariable Long id) {
+        wordService.removeFromTeachWord(id);
+    }
+
     @GetMapping("/teach/all")
     @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public List<Word> getAllTeachWord() {

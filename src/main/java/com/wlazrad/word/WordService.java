@@ -48,6 +48,12 @@ public class WordService {
         wordRepository.save(word);
     }
 
+    public void removeFromTeachWord(Long id) {
+        Word word = wordRepository.getOne(id);
+        word.setTeach(false);
+        wordRepository.save(word);
+    }
+
     public List<Word> returnAllWordsAllUsers() {
 
         return wordRepository.findAll();
