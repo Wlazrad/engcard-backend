@@ -36,10 +36,15 @@ public class PdfService {
 
     private ByteArrayOutputStream generate(List<Word> word) {
         try {
+
             Locale locale = Locale.forLanguageTag("PL");
             Context ctx = new Context(locale);
 
-            ctx.setVariable("model", "lala");
+            Word word1 = new Word();
+            word1.setArticulation("lala");
+            word.add(word1);
+
+            ctx.setVariable("model", word.get(0));
             ctx.setVariable("copy", false);
 
             ByteArrayOutputStream os = new ByteArrayOutputStream();

@@ -1,6 +1,7 @@
 package com.wlazrad.pdf;
 
 import com.wlazrad.word.Word;
+import com.wlazrad.word.WordService;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.io.IOUtils;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -20,11 +21,13 @@ import java.util.List;
 public class PdfWordController {
 
     private final PdfService pdfService;
+    private final WordService wordService;
 
 
     @GetMapping(value = "/pdf/download/")
     public void downloadWordPDF(HttpServletResponse response) {
-        List<Word> wordList = new ArrayList<>();
+
+        List<Word> wordList = wordService.returnAllWords();
         FileOBJ fileOBJ = pdfService.previewFile(wordList);
         setHeader(response, fileOBJ.getFileName());
         writeFile(response, fileOBJ);
