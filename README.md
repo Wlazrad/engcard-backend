@@ -59,3 +59,4 @@ INSERT INTO roles(name) VALUES('ROLE_ADMIN');
 ```
 
 SET GLOBAL time_zone = '+3:00';
+docker run container on 192.168.99.100 no on localhost
