@@ -1,18 +1,20 @@
 package com.wlazrad.txt;
 
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
-import java.util.ArrayList;
 import java.util.List;
 
 @Component
 @AllArgsConstructor
 public class DictionaryWord {
+
+    @Autowired
+    ReadFile readFile;
     @PostConstruct
     public List<String> getNounList(){
-        return ReadFile.main();
-    };
+        return readFile.main();
+    }
 }
