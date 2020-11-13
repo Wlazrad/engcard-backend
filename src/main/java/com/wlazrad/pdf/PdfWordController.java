@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 @CrossOrigin
@@ -26,7 +25,6 @@ public class PdfWordController {
 
     @GetMapping(value = "/pdf/download/")
     public void downloadWordPDF(HttpServletResponse response) {
-
         List<Word> wordList = wordService.returnAllWords();
         FileOBJ fileOBJ = pdfService.previewFile(wordList);
         setHeader(response, fileOBJ.getFileName());

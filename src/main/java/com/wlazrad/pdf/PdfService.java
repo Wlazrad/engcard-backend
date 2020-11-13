@@ -1,7 +1,6 @@
 package com.wlazrad.pdf;
 
 import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.pdf.BaseFont;
 import com.wlazrad.word.Word;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -50,10 +49,6 @@ public class PdfService {
             ByteArrayOutputStream os = new ByteArrayOutputStream();
 
             ITextRenderer renderer = new ITextRenderer();
-            renderer.getFontResolver().addFont("fonts/times.ttf", BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
-            renderer.getFontResolver().addFont("fonts/timesbd.ttf", BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
-            renderer.getFontResolver().addFont("fonts/timesbi.ttf", BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
-            renderer.getFontResolver().addFont("fonts/timesi.ttf", BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
 
             renderer.setDocumentFromString(templateEngine.process("wordCard.html", ctx));
             renderer.layout();
