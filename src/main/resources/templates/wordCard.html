@@ -12,6 +12,9 @@
 </head>
 <body>
 <label>koniec</label>
-<label th:text="${model.articulation}"></label>
+
+<tr th:each="card: ${list}">
+    <td th:text="${card.partOne}" />
+</tr>
 </body>
 </html>

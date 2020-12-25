@@ -10,6 +10,7 @@ import org.xhtmlrenderer.pdf.ITextRenderer;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -23,9 +24,9 @@ public class PdfService {
         this.templateEngine = templateEngine;
     }
 
-    public ByteArrayOutputStream generateFile(List<Word> word) {
+    public ByteArrayOutputStream generateFile(CardPdfParameters cardPdfParameters) {
         try {
-            return generate(word);
+            return generate(cardPdfParameters);
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println(e.getMessage() + "lala");
@@ -33,17 +34,21 @@ public class PdfService {
         }
     }
 
-    private ByteArrayOutputStream generate(List<Word> word) {
+    private ByteArrayOutputStream generate(CardPdfParameters cardPdfParameters) {
         try {
 
             Locale locale = Locale.forLanguageTag("PL");
             Context ctx = new Context(locale);
 
-            Word word1 = new Word();
-            word1.setArticulation("lala");
-            word.add(word1);
+            List<Word> wordList = new ArrayList<>();
 
-            ctx.setVariable("model", word.get(0));
+            Word word1 = new Word();
+            word1.setPartOne("radek");
+            word1.setArticulation("lala");
+            wordList.add(word1);
+
+            ctx.setVariable("model", cardPdfParameters);
+            ctx.setVariable("list", wordList);
             ctx.setVariable("copy", false);
 
             ByteArrayOutputStream os = new ByteArrayOutputStream();
@@ -65,7 +70,7 @@ public class PdfService {
 
 
     @Transactional(readOnly = true)
-    public FileOBJ previewFile(List<Word> wordList) {
-        return new FileOBJ("2", generateFile(wordList));
+    public FileOBJ previewFile(CardPdfParameters cardPdfParameters) {
+        return new FileOBJ("2", generateFile(cardPdfParameters));
     }
 }

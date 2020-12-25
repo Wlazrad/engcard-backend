@@ -26,7 +26,9 @@ public class PdfWordController {
     @GetMapping(value = "/pdf/download/")
     public void downloadWordPDF(HttpServletResponse response) {
         List<Word> wordList = wordService.returnAllWords();
-        FileOBJ fileOBJ = pdfService.previewFile(wordList);
+        CardPdfParameters cardPdfParameters = new CardPdfParameters();
+        cardPdfParameters.setWord(wordList);
+        FileOBJ fileOBJ = pdfService.previewFile(cardPdfParameters);
         setHeader(response, fileOBJ.getFileName());
         writeFile(response, fileOBJ);
     }
