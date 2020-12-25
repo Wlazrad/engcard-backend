@@ -24,9 +24,9 @@ public class PdfService {
         this.templateEngine = templateEngine;
     }
 
-    public ByteArrayOutputStream generateFile(CardPdfParameters cardPdfParameters) {
+    public ByteArrayOutputStream generateFile(CardPdfParameters cardPdfParameters, List<Word> wordList) {
         try {
-            return generate(cardPdfParameters);
+            return generate(cardPdfParameters, wordList);
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println(e.getMessage() + "lala");
@@ -34,13 +34,11 @@ public class PdfService {
         }
     }
 
-    private ByteArrayOutputStream generate(CardPdfParameters cardPdfParameters) {
+    private ByteArrayOutputStream generate(CardPdfParameters cardPdfParameters, List<Word> wordList) {
         try {
 
             Locale locale = Locale.forLanguageTag("PL");
             Context ctx = new Context(locale);
-
-            List<Word> wordList = new ArrayList<>();
 
             Word word1 = new Word();
             word1.setPartOne("radek");
@@ -70,7 +68,7 @@ public class PdfService {
 
 
     @Transactional(readOnly = true)
-    public FileOBJ previewFile(CardPdfParameters cardPdfParameters) {
-        return new FileOBJ("2", generateFile(cardPdfParameters));
+    public FileOBJ previewFile(CardPdfParameters cardPdfParameters, List<Word> wordList) {
+        return new FileOBJ("2", generateFile(cardPdfParameters, wordList));
     }
 }

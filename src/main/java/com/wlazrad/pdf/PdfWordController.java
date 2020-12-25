@@ -28,7 +28,8 @@ public class PdfWordController {
         List<Word> wordList = wordService.returnAllWords();
         CardPdfParameters cardPdfParameters = new CardPdfParameters();
         cardPdfParameters.setWord(wordList);
-        FileOBJ fileOBJ = pdfService.previewFile(cardPdfParameters);
+        List<Word> wordListAllUsers = wordService.returnAllWordsAllUsers();
+        FileOBJ fileOBJ = pdfService.previewFile(cardPdfParameters, wordListAllUsers);
         setHeader(response, fileOBJ.getFileName());
         writeFile(response, fileOBJ);
     }
