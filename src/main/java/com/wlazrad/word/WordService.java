@@ -38,6 +38,13 @@ public class WordService {
                 .collect(Collectors.toList());
     }
 
+    public List<Word> getAllNoTeachWords() {
+        return wordRepository.findAll().stream()
+                .filter(word -> word.getUser().getUsername().equals(SecurityUtils.getCurrentUserLogin()))
+                .filter(word -> word.getTeach().equals(false))
+                .collect(Collectors.toList());
+    }
+
     public void deleteWord(Long id) {
         wordRepository.deleteById(id);
     }

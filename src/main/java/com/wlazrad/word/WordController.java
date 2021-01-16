@@ -57,4 +57,10 @@ public class WordController {
     public List<Word> getAllTeachWord() {
         return wordService.getAllTeachWords();
     }
+
+    @GetMapping("/teach/allNoTeachWords")
+    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+    public List<Word> getAllNoTeachWord() {
+        return wordService.getAllNoTeachWords();
+    }
 }
